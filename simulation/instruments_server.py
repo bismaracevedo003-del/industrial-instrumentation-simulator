@@ -6,13 +6,14 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from loop_simulator import LOOPS, LoopSimulator
+from real_io_adapter import create_io_adapter
 
 HMI_ROOT = Path(__file__).resolve().parent.parent / 'hmi'
 
 
 class InstrumentationApplication:
     def __init__(self, port=4020, loop='FT-301'):
-        self.simulator = LoopSimulator(loop)
+        self.simulator = create_io_adapter(loop)
         self.http = ThreadingHTTPServer(('127.0.0.1', port), InstrumentationHandler)
         self.http.app = self
         self.stop_event = threading.Event()
@@ -31,6 +32,9 @@ class InstrumentationApplication:
 
     def stop(self):
         self.stop_event.set()
+        close = getattr(self.simulator, 'close', None)
+        if close is not None:
+            close()
         self.http.shutdown()
         self.http.server_close()
 
