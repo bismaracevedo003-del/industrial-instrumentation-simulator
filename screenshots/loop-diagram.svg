@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="280" viewBox="0 0 900 280">
+  <rect width="900" height="280" fill="#0b1220"/>
+  <text x="30" y="38" fill="#4cc9f0" font-family="Segoe UI" font-size="22" font-weight="bold">Control loop FT-301 / FV-301</text>
+  <g font-family="Segoe UI" font-size="13" fill="#e6edf7">
+    <rect x="40" y="90" width="120" height="52" rx="8" fill="#111c2e" stroke="#ffd166"/><text x="72" y="121">Setpoint</text>
+    <rect x="220" y="90" width="120" height="52" rx="8" fill="#111c2e" stroke="#4cc9f0"/><text x="238" y="121">PID controller</text>
+    <rect x="400" y="90" width="120" height="52" rx="8" fill="#111c2e" stroke="#4cc9f0"/><text x="420" y="121">Valve FV-301</text>
+    <rect x="580" y="90" width="120" height="52" rx="8" fill="#111c2e" stroke="#e6edf7"/><text x="602" y="121">Process</text>
+    <rect x="760" y="90" width="110" height="52" rx="8" fill="#111c2e" stroke="#90be6d"/><text x="774" y="121">FT-301</text>
+  </g>
+  <g stroke="#4cc9f0" stroke-width="2" fill="none">
+    <path d="M160 116 H220"/><path d="M340 116 H400"/><path d="M520 116 H580"/><path d="M700 116 H760"/>
+    <path d="M870 116 H910 V210 H280 V142"/>
+  </g>
+  <rect x="40" y="190" width="200" height="42" rx="8" fill="#1a1020" stroke="#ef476f"/>
+  <text x="58" y="216" fill="#ef476f" font-family="Segoe UI" font-size="13">Fault: open / short / frozen</text>
+  <text x="300" y="216" fill="#91a7c4" font-family="Segoe UI" font-size="13">4-20 mA feedback closes the loop</text>
+</svg>

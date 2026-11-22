@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instrumentation & PID Loop Simulator</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Instrumentation & Loop Tuning</h1>
+    <p>FOPDT process · 4-20 mA transmitter · PID with anti-windup</p>
+  </header>
+  <main>
+    <section class="panel">
+      <div class="row">
+        <label>Loop
+          <select id="loop">
+            <option>FT-301</option><option>LT-101</option><option>TT-201</option><option>PT-401</option>
+          </select>
+        </label>
+        <label>Fault
+          <select id="fault">
+            <option>NONE</option><option>OPEN_CIRCUIT</option><option>SHORT_CIRCUIT</option><option>FROZEN</option>
+          </select>
+        </label>
+      </div>
+      <div class="kpis">
+        <div><span>PV</span><strong id="pv">0</strong><small id="unit">m3/h</small></div>
+        <div><span>Setpoint</span><strong id="spDisplay">0</strong></div>
+        <div><span>Output</span><strong id="output">0 %</strong></div>
+        <div><span>Loop current</span><strong id="ma">4.00 mA</strong></div>
+      </div>
+      <div id="alarm" class="alarm">NO FAULT</div>
+      <canvas id="trend" width="900" height="320"></canvas>
+      <div class="legend"><span class="pvLine">PV</span><span class="spLine">SP</span><span class="outLine">OUT</span></div>
+    </section>
+    <section class="panel controls">
+      <h2>Controller</h2>
+      <label><input id="auto" type="checkbox" checked /> Auto mode</label>
+      <label>Setpoint <input id="setpoint" type="number" step="1" /></label>
+      <label>Kp <input id="kp" type="number" step="0.1" /></label>
+      <label>Ti (s) <input id="ti" type="number" step="0.1" /></label>
+      <label>Td (s) <input id="td" type="number" step="0.1" /></label>
+      <label>Manual output (%) <input id="manual" type="number" step="1" min="0" max="100" /></label>
+      <label>Disturbance <input id="disturbance" type="number" step="1" min="-50" max="50" /></label>
+      <h2>Tuning</h2>
+      <div class="row">
+        <select id="method">
+          <option>IMC-PI</option><option>IMC-PID</option><option>ZN-PI</option><option>ZN-PID</option><option>COHEN-COON</option>
+        </select>
+        <button id="tune">Apply tuning</button>
+      </div>
+      <p id="tuningResult">Process: K=— tau=— theta=—</p>
+      <button id="reset">Reset loop</button>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
